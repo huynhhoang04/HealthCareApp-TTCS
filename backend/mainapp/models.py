@@ -56,9 +56,11 @@ class FoodItem(models.Model):
 class NutritionLog(models.Model):
     MEAL_CHOICES = [('Sáng', 'Sáng'), ('Trưa', 'Trưa'), ('Chiều', 'Chiều'), ('Tối', 'Tối'), ('Phụ', 'Bữa phụ')]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    food_item = models.ForeignKey(FoodItem, on_delete=models.CASCADE)
+    food_item = models.ForeignKey(FoodItem, on_delete=models.CASCADE, null=True, blank=True)
+    custom_food_name = models.CharField(max_length=255, null=True, blank=True)
+    custom_calories = models.FloatField(null=True, blank=True)
     meal_type = models.CharField(max_length=20, choices=MEAL_CHOICES)
-    weight_in_grams = models.FloatField()
+    weight_in_grams = models.FloatField(null=True, blank=True, help_text="Trọng lượng món ăn (gram)")
     logged_at = models.DateTimeField(auto_now_add=True)
 
 # hệ thống bảng tập luyện
@@ -67,11 +69,12 @@ class ExerciseCategory(models.Model):
     def __str__(self): return self.name
 
 class Exercise(models.Model):
-    category = models.ForeignKey(ExerciseCategory, on_delete=models.PROTECT)
+    categories = models.ManyToManyField(ExerciseCategory, related_name='exercises')
     name = models.CharField(max_length=255)
     description = models.TextField()
     video_url = models.URLField(null=True, blank=True)
     met_value = models.FloatField(help_text="Chỉ số chuyển đổi năng lượng để tính Calo")
+    image = models.ImageField(upload_to='exercises/', null=True, blank=True)
     muscle_group = models.CharField(max_length=100) 
 
     def __str__(self): return self.name
@@ -79,7 +82,7 @@ class Exercise(models.Model):
 class WorkoutLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    duration_minutes = models.IntegerField()
+    duration_seconds = models.IntegerField(default=0)
     sets = models.IntegerField(null=True, blank=True)
     reps = models.IntegerField(null=True, blank=True)
     calories_burned = models.FloatField()

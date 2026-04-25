@@ -6,19 +6,19 @@ import { AuthContext } from '../context/AuthContext';
 // 1. Định nghĩa dữ liệu cho 3 trang giới thiệu (Cảm hứng từ image_7.png)
 const onboardingData = [
     {
-        icon: 'ᶠᶸᶜᵏᵧₒᵤ!🖕',
-        title: 'dmm',
-        desc: 'dmm',
+        icon: '🤖', 
+        title: 'Lộ Trình AI Cá Nhân Hóa',
+        desc: 'Nhận ngay kế hoạch tập luyện và dinh dưỡng được trí tuệ nhân tạo thiết kế riêng, dựa trên 100% chỉ số cơ thể và mục tiêu của bạn.',
     },
     {
-        icon: '💦🫱({})🫲👅',
-        title: 'dmm',
-        desc: 'dmm',
+        icon: '🥗', 
+        title: 'Kiểm Soát Calo Dễ Dàng',
+        desc: 'Theo dõi lượng Calo nạp vào và đốt cháy mỗi ngày. Xây dựng thói quen ăn uống, sinh hoạt lành mạnh mà không hề áp lực.',
     },
     {
-        icon: '({})👅',
-        title: 'dmm',
-        desc: 'dmm',
+        icon: '✨', 
+        title: 'Trợ Lý AI Đồng Hành 24/7',
+        desc: 'Luôn bên cạnh bạn mọi lúc mọi nơi. Sẵn sàng giải đáp thắc mắc, gợi ý thực đơn và tiếp thêm động lực để bạn bứt phá giới hạn.',
     }
 ];
 

@@ -19,10 +19,10 @@ export default function AuthOption() {
             <div className="w-full max-w-sm text-center px-4">
                 
                 {/* Một cái icon hoặc hình ảnh minh họa nhỏ */}
-                <div className="text-8xl mb-8 transform hover:scale-110 transition">NİG🤞🏾GER</div>
+                <div className="text-8xl mb-8 transform hover:scale-110 transition">🤞🏾</div>
                 
                 <h1 className="text-3xl font-extrabold mb-4 leading-tight">Sẵn sàng để thay đổi?</h1>
-                <p className="text-purple-100 mb-12 text-lg">dmm</p>
+                <p className="text-purple-100 mb-12 text-lg">Đăng ký ngày</p>
                 
                 <div className="space-y-4">
                     {/* Nút Đăng nhập: Tone tím đậm */}
