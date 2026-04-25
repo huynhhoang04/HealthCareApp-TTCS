@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 import json
 from ai_engine.models import AIRecommendationPlan, PlanDayExercise, PlanDetail, PlanOption
+from django.conf import settings
 from mainapp.models import Exercise, WorkoutLog
 from datetime import date
 from django.utils import timezone
@@ -40,7 +41,7 @@ class CasualChatAPIView(APIView):
 
         payload_messages = [{"role": "system", "content": system_content}] + messages
 
-        ollama_url = "http://localhost:11434/api/chat"
+        ollama_url = settings.AI_ENDPOINT_URL
         payload = {
             "model": "fitness-pt", 
             "messages": payload_messages,
@@ -156,9 +157,9 @@ REQUIRED JSON STRUCTURE:
             "stream": False,
             "format": "json"
         }
-
+        ollama_url = settings.AI_ENDPOINT_URL
         try:
-            response = requests.post("http://localhost:11434/api/chat", json=payload)
+            response = requests.post(ollama_url, json=payload, timeout=60)
             response.raise_for_status()
             ai_output = response.json().get('message', {}).get('content', '{}')
             ai_output = ai_output.strip().replace('```json', '').replace('```', '')
